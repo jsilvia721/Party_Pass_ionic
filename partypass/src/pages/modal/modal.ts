@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { Parties } from '../../providers/parties';
 import { HomePage } from '../home/home';
 import { Registration } from '../registration/registration'
@@ -22,26 +22,20 @@ export class Modal {
 
 	party: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public partyService: Parties, public viewCtrl: ViewController) {
   	this.party = navParams.get('party');
-  	console.log(this);
+  	console.log('party');
+  	console.log(this.party);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Modal');
   }
 
-  // deleteParty(party){
- 
-  //   //Remove locally
-  //     let index = this.party.indexOf(party);
- 
-  //     if(index > -1){
-  //       this.party.splice(index, 1);
-  //     }   
- 
-  //   //Remove from database
-  //   this.partyService.deleteParty(party._id);
-  // }
+  deleteParty(){
+    this.partyService.deleteParty(this.party._id);
+    this.viewCtrl.dismiss(this.party);
+
+  }
 
 }
