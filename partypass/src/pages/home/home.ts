@@ -12,6 +12,7 @@ import 'rxjs/add/operator/map';
   selector: 'page-home',
   templateUrl: 'home.html'
 })
+
 export class HomePage {
 
 	parties: any[];
@@ -28,6 +29,12 @@ export class HomePage {
       this.parties = data;
     });
  
+  }
+
+  itemSelected(party){
+  	this.nav.push(Modal, {
+  		party: party
+  	})
   }
  
   addParty(){

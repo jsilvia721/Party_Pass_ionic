@@ -6,10 +6,13 @@
 
 <ion-content>
   <ion-list>
-    <button ion-item *ngFor="let party of parties" (click)="itemSelected(item)">
+    <button ion-item *ngFor="let party of parties" (click)="itemSelected(party)">
       {{ party.address }}
-    </button>  
+    </button>
+    <ion-item-options>
+      </ion-item-options>  
   </ion-list>
+  
   <button ion-button full (click)="addParty()">
     Register Party
   </button>

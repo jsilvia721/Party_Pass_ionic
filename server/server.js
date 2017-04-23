@@ -80,6 +80,7 @@ var Party = mongoose.model('Party', {
  
     // delete a review
     app.delete('/api/parties/:party_id', function(req, res) {
+        console.log(req)
         Party.remove({
             _id : req.params.party_id
         }, function(err, party) {
