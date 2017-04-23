@@ -6,9 +6,6 @@ import { Detail } from './detail';
   declarations: [
     Detail,
   ],
-  imports: [
-    IonicModule.forChild(Detail),
-  ],
   exports: [
     Detail
   ]
