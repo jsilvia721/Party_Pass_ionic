@@ -7,7 +7,7 @@
 <ion-content>
   <ion-list>
     <button ion-item *ngFor="let party of parties" (click)="itemSelected(item)">
-      {{ party.text }}
+      {{ party.address }}
     </button>  
   </ion-list>
   <button ion-button full (click)="addParty()">
