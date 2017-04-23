@@ -29,11 +29,11 @@ export class AboutPage {
  
   loadMap(){
  
-    let latLng = new google.maps.LatLng(-34.9290, 138.6010);
+    let latLng = new google.maps.LatLng(42.3912, -72.5267);
  
     let mapOptions = {
       center: latLng,
-      zoom: 15,
+      zoom: 13,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
  
