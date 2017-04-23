@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { IonicModule } from 'ionic-angular';
-import { Modal } from './modal';
+import { Registration } from './registration';
 
 @NgModule({
   declarations: [
-    Modal,
+    Registration,
   ],
   exports: [
-    Modal
+    Registration
   ]
 })
-export class ModalModule {}
+export class RegistrationModule {}
