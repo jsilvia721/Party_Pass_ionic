@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Modal } from '../modal/modal';
+import { Registration } from '../registration/registration'
 
 
 @Component({
@@ -10,6 +11,7 @@ import { Modal } from '../modal/modal';
 export class HomePage {
 
 	items: any[];
+	// registrationForm: any[];
 
   constructor(public navCtrl: NavController) {
   	this.items = [];
@@ -20,12 +22,18 @@ export class HomePage {
   		})
   	}
 
+  	// this.registrationForm.push()
+
   }
 
   itemSelected(item){
   	this.navCtrl.push(Modal, {
   		item: item
   	});
+  }
+
+  triggerRegisterParty(){
+  	this.navCtrl.push(Registration);
   }
 
 }
