@@ -7,12 +7,43 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>registration</ion-title>
+    <ion-title>Party Registration</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+	<ion-list>
 
+	  <ion-item>
+	    <ion-label floating>Address</ion-label>
+	    <ion-input type="text"></ion-input>
+	  </ion-item>
+
+	  <ion-item>
+	    <ion-label floating>Date</ion-label>
+	      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="date"></ion-datetime>
+
+	  </ion-item>
+
+	  <ion-item>
+	    <ion-label floating>Start Time</ion-label>
+	    <ion-datetime displayFormat="h:mmA" [(ngModel)]="startTime"></ion-datetime>
+	  </ion-item>
+
+	  <ion-item>
+	    <ion-label floating>End Time</ion-label>
+	    <ion-datetime displayFormat="h:mmA" [(ngModel)]="endTime"></ion-datetime>
+	  </ion-item>
+
+	  <ion-item>
+	    <ion-label floating>Host(s)</ion-label>
+	    <ion-input type="text"></ion-input>
+	  </ion-item>
+
+	</ion-list>
+	<button ion-button full (click)="submitParty()">
+    Submit
+  </button>
 </ion-content>
