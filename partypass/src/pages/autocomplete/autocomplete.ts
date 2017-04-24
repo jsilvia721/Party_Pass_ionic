@@ -41,7 +41,7 @@ export class Autocomplete {
       return;
     }
     let me = this;
-    this.service.getPlacePredictions({ input: this.autocomplete.query, componentRestrictions: {country: 'USA'} }, function (predictions, status) {
+    this.service.getPlacePredictions({ input: this.autocomplete.query }, function (predictions, status) {
       me.autocompleteItems = [];
       me.zone.run(function () {
         predictions.forEach(function (prediction) {
