@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { HomePage } from '../home/home'
 
 /**
@@ -15,18 +15,35 @@ import { HomePage } from '../home/home'
 })
 export class Registration {
 
-	// registrationForm: any;
+	address: any;
+	date: any;
+	startTime: any;
+	endTime: any;
+	host: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  	// this.registrationForm = navParams.get('registrationForm');
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Registration');
   }
 
-  submitParty(){
-  	this.navCtrl.push(HomePage);
+  save(): void {
+ 
+    let party = {
+      address: this.address,
+      date: this.date,
+      startTime: this.startTime,
+      endTime: this.endTime,
+      host: this.host
+    };
+ 
+    this.viewCtrl.dismiss(party);
+ 
+  }
+
+  close(): void {
+    this.viewCtrl.dismiss();
   }
 
 }

@@ -7,12 +7,22 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Party {{ item.id }}</ion-title>
+    <ion-title>Party {{ party.address }}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-<h2> Party {{ item.id }} Details </h2>
+<h2>Party {{ party.address }} Details </h2>
+<p>Address: {{ party.address }}</p>
+<p>Date: {{ party.date }}</p>
+<p>Start Time: {{ party.startTime }}</p>
+<p>End Time: {{ party.endTime }}</p>
+<p>Host(s): {{ party.host }}</p>
+
+<button ion-button color="danger" (click)="deleteParty()">
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
 </ion-content>
