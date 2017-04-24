@@ -7,6 +7,8 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
+ declare var google;
+
 @IonicPage()
 @Component({
   selector: 'page-autocomplete',
@@ -32,15 +34,15 @@ export class Autocomplete {
   chooseItem(item: any) {
     this.viewCtrl.dismiss(item);
   }
-  
+
   updateSearch() {
     if (this.autocomplete.query == '') {
       this.autocompleteItems = [];
       return;
     }
     let me = this;
-    this.service.getPlacePredictions({ input: this.autocomplete.query, componentRestrictions: {country: 'TH'} }, function (predictions, status) {
-      me.autocompleteItems = []; 
+    this.service.getPlacePredictions({ input: this.autocomplete.query, componentRestrictions: {country: 'USA'} }, function (predictions, status) {
+      me.autocompleteItems = [];
       me.zone.run(function () {
         predictions.forEach(function (prediction) {
           me.autocompleteItems.push(prediction.description);
