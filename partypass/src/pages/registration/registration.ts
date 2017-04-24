@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
-import { HomePage } from '../home/home'
+import { IonicPage, NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
+import { HomePage } from '../home/home';
+import { Autocomplete } from '../autocomplete/autocomplete';
 
 /**
  * Generated class for the Registration page.
@@ -21,7 +22,10 @@ export class Registration {
 	endTime: any;
 	host: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, private modalCtrl: ModalController) {
+    this.address = {
+      place: ''
+    };
   }
 
   ionViewDidLoad() {
@@ -44,6 +48,15 @@ export class Registration {
 
   close(): void {
     this.viewCtrl.dismiss();
+  }
+
+  showAddressModal () {
+    let modal = this.modalCtrl.create(Autocomplete);
+    let me = this;
+    modal.onDidDismiss(data => {
+      this.address.place = data;
+    });
+    modal.present();
   }
 
 }

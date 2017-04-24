@@ -9,6 +9,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { Modal } from '../pages/modal/modal';
 import { Registration } from '../pages/registration/registration';
 import { Parties } from '../providers/parties'
+import { Autocomplete } from '../pages/autocomplete/autocomplete';
 import { Http, Headers, HttpModule } from '@angular/http';
 import {
  GoogleMaps,
@@ -30,7 +31,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     TabsPage,
     Modal,
-    Registration
+    Registration,
+    Autocomplete
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     TabsPage,
     Modal,
-    Registration
+    Registration,
+    Autocomplete
   ],
   providers: [
     StatusBar,
