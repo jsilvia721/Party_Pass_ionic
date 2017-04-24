@@ -24,7 +24,9 @@ export class Registration {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, private modalCtrl: ModalController) {
     this.address = {
-      place: ''
+      place: '',
+      lat: 0,
+      long: 0
     };
   }
 
@@ -36,6 +38,8 @@ export class Registration {
 
     let party = {
       address: this.address.place,
+      lat: this.address.lat,
+      long: this.address.long,
       date: this.date,
       startTime: this.startTime,
       endTime: this.endTime,
@@ -52,9 +56,14 @@ export class Registration {
 
   showAddressModal () {
     let modal = this.modalCtrl.create(Autocomplete);
+
     let me = this;
     modal.onDidDismiss(data => {
-      this.address.place = data;
+      console.log('data passed to registration');
+      console.log(data);
+      this.address.place = data[0];
+      this.address.lat = data[1];
+      this.address.long = data[2];
 
     });
     modal.present();

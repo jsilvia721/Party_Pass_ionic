@@ -30,7 +30,9 @@ var Party = mongoose.model('Party', {
     date: String,
     startTime: String,
     endTime: String,
-    host: String
+    host: String,
+    lat: Number,
+    long: Number
 });
  
 // Routes
@@ -63,6 +65,8 @@ var Party = mongoose.model('Party', {
             startTime : req.body.startTime,
             endTime : req.body.endTime,
             host : req.body.host,
+            lat : req.body.lat,
+            long : req.body.long,
             done : false
         }, function(err, party) {
             if (err)

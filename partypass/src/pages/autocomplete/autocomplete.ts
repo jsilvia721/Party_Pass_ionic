@@ -1,6 +1,5 @@
 import { Component, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
-
 /**
  * Generated class for the Autocomplete page.
  *
@@ -19,7 +18,7 @@ export class Autocomplete {
   autocompleteItems;
   autocomplete;
   service = new google.maps.places.AutocompleteService();
-
+  geocoder = new google.maps.Geocoder();
   constructor (public viewCtrl: ViewController, private zone: NgZone) {
     this.autocompleteItems = [];
     this.autocomplete = {
@@ -32,7 +31,19 @@ export class Autocomplete {
   }
 
   chooseItem(item: any) {
-    this.viewCtrl.dismiss(item);
+    console.log('item passed');
+    let me = this;
+    this.geocoder.geocode({'address': item}, function(results, status) {
+        if (status === 'OK') {
+          //gets location from google based on address and returns the results which contain the coordinates,
+          //pass that to registraion so we could save the coordinates in our database
+          console.log(results);
+          let data: [string, number, number] = [item, results[0].geometry.location.lat(), results[0].geometry.location.lng()];
+          me.viewCtrl.dismiss(data);
+        } else {
+          alert('Geocode was not successful for the following reason: ' + status);
+        }
+      });
   }
 
   updateSearch() {
@@ -49,9 +60,6 @@ export class Autocomplete {
             me.autocompleteItems.push(prediction.description);
           });
         }
-        //  else {
-        //   me.autocompleteItems.push("No addresses available");
-        // }
       });
     });
   }
