@@ -52,9 +52,12 @@ export class Registration {
 
   showAddressModal () {
     let modal = this.modalCtrl.create(Autocomplete);
+
     let me = this;
     modal.onDidDismiss(data => {
-      this.address.place = data;
+      console.log('data passed to registration');
+      console.log(data);
+      this.address.place = data[0];
 
     });
     modal.present();

@@ -32,17 +32,19 @@ export class Autocomplete {
 
   chooseItem(item: any) {
     console.log('item passed');
-    console.log(item);
-    console.log(this);
+    let location;
+    let me = this;
     this.geocoder.geocode({'address': item}, function(results, status) {
         if (status === 'OK') {
-          console.log(results[0].geometry.location.lat());
-          console.log(results[0].geometry.location.lng());
+          //gets location from google based on address and returns the results which contain the coordinates,
+          //pass that to registraion so we could save the coordinates in our database
+          location = results;
+          let data: [string, any] = [item, location];
+          me.viewCtrl.dismiss(data);
         } else {
           alert('Geocode was not successful for the following reason: ' + status);
         }
       });
-    this.viewCtrl.dismiss(item);
   }
 
   updateSearch() {
@@ -53,8 +55,6 @@ export class Autocomplete {
     let me = this;
     this.service.getPlacePredictions({ input: this.autocomplete.query }, function (predictions, status) {
       me.autocompleteItems = [];
-      console.log(predictions[0].description);
-      //console.log(me);
       me.zone.run(function () {
         if (predictions){
           predictions.forEach(function (prediction) {
