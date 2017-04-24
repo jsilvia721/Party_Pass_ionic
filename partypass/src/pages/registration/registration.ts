@@ -33,17 +33,17 @@ export class Registration {
   }
 
   save(): void {
- 
+
     let party = {
-      address: this.address,
+      address: this.address.place,
       date: this.date,
       startTime: this.startTime,
       endTime: this.endTime,
       host: this.host
     };
- 
+
     this.viewCtrl.dismiss(party);
- 
+
   }
 
   close(): void {
@@ -55,6 +55,7 @@ export class Registration {
     let me = this;
     modal.onDidDismiss(data => {
       this.address.place = data;
+
     });
     modal.present();
   }
