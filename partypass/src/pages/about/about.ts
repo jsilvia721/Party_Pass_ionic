@@ -20,7 +20,7 @@ export class AboutPage {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
   parties: any[];
-
+  party: any;
   constructor(public navCtrl: NavController, public partyService: Parties) {
 
   }
@@ -29,9 +29,21 @@ export class AboutPage {
   	this.partyService.getParties().then((data) => {
       console.log(data);
       this.parties = data;
+      console.log("this is the parties object: " + this.parties);
+      this.loadMap();
+      for (let party of this.parties){
+        let latLng = new google.maps.LatLng(party.lat, party.long);
+        let marker = new google.maps.Marker({
+          map: this.map,
+          animation: google.maps.Animation.DROP,
+          position: latLng
+        });
+        this.party = party;
+        let content = "<p><strong>Address:</strong> " + party.address +"</p> <p><strong>Date:</strong> " + party.date + "</p> <p><strong>Start Time:</strong> " + party.startTime + "</p> <p><strong>End Time:</strong> " + party.endTime + "</p> <p><strong>Host(s):</strong> " +party.host +"</p>";
+
+        this.addInfoWindow(marker, content);
+      }
     });
-    console.log("this is the parties object: " + this.parties);
-    this.loadMap();
   }
 
   loadMap(){
@@ -45,7 +57,6 @@ export class AboutPage {
     }
 
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-
   }
 
   addInfoWindow(marker, content){
@@ -59,20 +70,4 @@ export class AboutPage {
     });
 
   }
-
-  addMarker(){
-
-    let marker = new google.maps.Marker({
-      map: this.map,
-      animation: google.maps.Animation.DROP,
-      position: this.map.getCenter()
-    });
-
-    let content = "<h4>Information!</h4>";
-
-    this.addInfoWindow(marker, content);
-
-  }
-
-
 }
