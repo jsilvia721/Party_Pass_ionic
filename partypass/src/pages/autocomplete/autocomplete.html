@@ -6,6 +6,9 @@
 </ion-header>
 <ion-content>
   <ion-list>
+    <ion-item *ngIf="autocompleteItems.length == 0">
+      No Address Available
+    </ion-item>
     <ion-item *ngFor="let item of autocompleteItems" tappable (click)="chooseItem(item)">
       {{ item }}
     </ion-item>
