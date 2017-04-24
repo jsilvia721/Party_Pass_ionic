@@ -31,6 +31,17 @@ export class Autocomplete {
   }
 
   chooseItem(item: any) {
+    console.log('item passed');
+    console.log(item);
+    console.log(this);
+    this.geocoder.geocode({'address': item}, function(results, status) {
+        if (status === 'OK') {
+          console.log(results[0].geometry.location.lat());
+          console.log(results[0].geometry.location.lng());
+        } else {
+          alert('Geocode was not successful for the following reason: ' + status);
+        }
+      });
     this.viewCtrl.dismiss(item);
   }
 
@@ -44,23 +55,6 @@ export class Autocomplete {
       me.autocompleteItems = [];
       console.log(predictions[0].description);
       //console.log(me);
-      me.geocoder.geocode({'address': predictions[0].description}, function(results, status) {
-          if (status === 'OK') {
-            console.log(results[0].geometry.location.lat());
-            console.log(results[0].geometry.location.lng());
-            // var marker = new google.maps.Marker({
-            //   map: resultsMap,
-            //   position: results[0].geometry.location
-            // });
-          } else {
-            alert('Geocode was not successful for the following reason: ' + status);
-          }
-        });
-
-      // me.geocoder.forwardGeocode({input: })
-  //     me.nativeGeocoder.forwardGeocode("Berlin")
-  // .then((coordinates: NativeGeocoderForwardResult) => console.log("The coordinates are latitude=" + coordinates.latitude + " and longitude=" + coordinates.longitude))
-  // .catch((error: any) => console.log(error));
       me.zone.run(function () {
         if (predictions){
           predictions.forEach(function (prediction) {
