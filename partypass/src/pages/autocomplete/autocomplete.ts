@@ -32,14 +32,13 @@ export class Autocomplete {
 
   chooseItem(item: any) {
     console.log('item passed');
-    let location;
     let me = this;
     this.geocoder.geocode({'address': item}, function(results, status) {
         if (status === 'OK') {
           //gets location from google based on address and returns the results which contain the coordinates,
           //pass that to registraion so we could save the coordinates in our database
-          location = results;
-          let data: [string, any] = [item, location];
+          console.log(results);
+          let data: [string, number, number] = [item, results[0].geometry.location.lat(), results[0].geometry.location.lng()];
           me.viewCtrl.dismiss(data);
         } else {
           alert('Geocode was not successful for the following reason: ' + status);
