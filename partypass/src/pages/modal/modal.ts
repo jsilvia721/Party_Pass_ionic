@@ -21,9 +21,9 @@ import 'rxjs/add/operator/map';
 export class Modal {
 
 	party: any;
-  HomePage2: any;
+  HomePage: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public partyService: Parties, public viewCtrl: ViewController, public modelCtrl: ModalController) {
-    this.HomePage2 = new HomePage(navCtrl, partyService, modelCtrl, viewCtrl);
+    this.HomePage = new HomePage(navCtrl, partyService, modelCtrl, viewCtrl);
   	this.party = navParams.get('party');
   	console.log('party');
   	console.log(this.party);
@@ -34,7 +34,7 @@ export class Modal {
   }
 
   deleteParty(){
-    this.HomePage2.deleteParty(this.party);
+    this.HomePage.deleteParty(this.party);
 
 
   }
