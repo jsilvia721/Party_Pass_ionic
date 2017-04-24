@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
 import { Parties } from '../../providers/parties';
 import { HomePage } from '../home/home';
 import { Registration } from '../registration/registration'
@@ -21,8 +21,9 @@ import 'rxjs/add/operator/map';
 export class Modal {
 
 	party: any;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public partyService: Parties, public viewCtrl: ViewController) {
+  HomePage2: any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public partyService: Parties, public viewCtrl: ViewController, public modelCtrl: ModalController) {
+    this.HomePage2 = new HomePage(navCtrl, partyService, modelCtrl, viewCtrl);
   	this.party = navParams.get('party');
   	console.log('party');
   	console.log(this.party);
@@ -33,8 +34,8 @@ export class Modal {
   }
 
   deleteParty(){
-    this.partyService.deleteParty(this.party._id);
-    this.viewCtrl.dismiss(this.party);
+    this.HomePage2.deleteParty(this.party);
+
 
   }
 

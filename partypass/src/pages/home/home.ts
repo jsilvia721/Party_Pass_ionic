@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController } from 'ionic-angular';
+import { NavController, ModalController, ViewController } from 'ionic-angular';
 import { Modal } from '../modal/modal';
 import { Registration } from '../registration/registration'
 import { Parties } from '../../providers/parties';
@@ -18,17 +18,18 @@ export class HomePage {
 	parties: any[];
 	// registrationForm: any[];
 
-  constructor(public nav: NavController, public partyService: Parties, public modalCtrl: ModalController) {
- 
+  constructor(public nav: NavController, public partyService: Parties, public modalCtrl: ModalController, public viewCtrl: ViewController) {
+    this.ionViewDidLoad();
+
   }
- 
+
   ionViewDidLoad(){
- 
+
     this.partyService.getParties().then((data) => {
       console.log(data);
       this.parties = data;
     });
- 
+
   }
 
   itemSelected(party){
@@ -36,33 +37,44 @@ export class HomePage {
   		party: party
   	})
   }
- 
+
   addParty(){
- 
+
     let modal = this.modalCtrl.create(Registration);
- 
+
     modal.onDidDismiss(party => {
       if(party){
         this.parties.push(party);
-        this.partyService.createParty(party);        
+        this.partyService.createParty(party);
       }
     });
- 
+
     modal.present();
- 
+
   }
- 
-  deleteParty(party){
- 
+
+   deleteParty(party){
+
     //Remove locally
+    console.log('home delete');
+    console.log(party);
+    console.log(party._id);
+
+    console.log(this.parties);
+
+      this.ionViewDidLoad();
+
+      console.log(this.parties);
+
       let index = this.parties.indexOf(party);
- 
+
       if(index > -1){
         this.parties.splice(index, 1);
-      }   
- 
+      }
+
     //Remove from database
     this.partyService.deleteParty(party._id);
+    this.viewCtrl.dismiss(party);
   }
- 
+
 }
