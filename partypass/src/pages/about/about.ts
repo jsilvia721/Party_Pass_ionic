@@ -1,5 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { Parties } from '../../providers/parties';
 
 
 /**
@@ -18,12 +19,18 @@ export class AboutPage {
 
   @ViewChild('map') mapElement: ElementRef;
   map: any;
+  parties: any[];
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public partyService: Parties) {
 
   }
 
   ionViewDidLoad(){
+  	this.partyService.getParties().then((data) => {
+      console.log(data);
+      this.parties = data;
+    });
+    console.log("this is the parties object: " + this.parties);
     this.loadMap();
   }
 
