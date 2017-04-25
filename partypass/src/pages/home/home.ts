@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController, ViewController } from 'ionic-angular';
+import { NavController, ModalController, ViewController, App} from 'ionic-angular';
 import { Modal } from '../modal/modal';
 import { Registration } from '../registration/registration'
 import { Parties } from '../../providers/parties';
@@ -17,11 +17,11 @@ import 'rxjs/add/operator/map';
 
 export class HomePage {
 
-	parties: any[];
-	username = '';
-	email = '';
+  parties: any[];
+  username = '';
+  email = '';
 
-  constructor(public nav: NavController, public partyService: Parties, public modalCtrl: ModalController, public viewCtrl: ViewController, private auth: AuthService) {
+  constructor(public app: App,public nav: NavController, public partyService: Parties, public modalCtrl: ModalController, public viewCtrl: ViewController, private auth: AuthService) {
     this.ionViewDidLoad();
     let info = this.auth.getUserInfo();
     this.username = info['name'];
@@ -70,12 +70,20 @@ export class HomePage {
   }
 
   public logout() {
-  	// document.querySelector("ion-tab")['style'].display = 'none';
-    this.auth.logout().subscribe(succ => {
-    this.nav.setRoot(Login)
-    });
+    // document.querySelector("ion-tab")['style'].display = 'none';
+    this.auth.logout();
+
+    // Now I'll access the root NavController for the app,
+    // and use that to reset the nav stack
+
+// Now I'll access the root NavController for the app,
+// and use that to reset the nav stack
+
+    const root = this.app.getRootNav();
+    root.popToRoot();
+    // this.auth.logout().subscribe(succ => {
+    //   this.nav.setRoot(Login);
+    //   this.nav.popToRoot();
+    // });
   }
 }
-
-
-

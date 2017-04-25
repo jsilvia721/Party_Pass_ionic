@@ -5,7 +5,7 @@ import { Register } from '../register/register';
 import { HomePage } from '../home/home';
 import { TabsPage } from '../tabs/tabs';
 
- 
+
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
@@ -13,18 +13,20 @@ import { TabsPage } from '../tabs/tabs';
 export class Login {
   loading: Loading;
   registerCredentials = { email: '', password: '' };
- 
-  constructor(public nav: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController) { }
- 
+  constructor(public nav: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
+
+  }
+  // ionViewWillEnter(){
+  //   this.nav.setRoot(Login);
+  // }
   public createAccount() {
     this.nav.push(Register)
   }
- 
   public login() {
     this.showLoading()
     this.auth.login(this.registerCredentials).subscribe(allowed => {
-      if (allowed) {        
-        this.nav.setRoot(TabsPage);
+      if (allowed) {
+        this.nav.push(TabsPage);
       } else {
         this.showError("Access Denied");
       }
@@ -33,7 +35,7 @@ export class Login {
         this.showError(error);
       });
   }
- 
+
   showLoading() {
     this.loading = this.loadingCtrl.create({
       content: 'Please wait...',
@@ -41,10 +43,10 @@ export class Login {
     });
     this.loading.present();
   }
- 
+
   showError(text) {
     this.loading.dismiss().catch(() => {});
- 
+
     let alert = this.alertCtrl.create({
       title: 'Fail',
       subTitle: text,
