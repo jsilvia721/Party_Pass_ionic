@@ -23,17 +23,11 @@ export class Modal {
 
 	party: any;
   parties: any;
-  HomePage2: any;
+  HomePage: any;
   constructor(public app: App,public navCtrl: NavController, public navParams: NavParams, public partyService: Parties, public viewCtrl: ViewController, public modelCtrl: ModalController, private auth: AuthService, private loadingCtrl: LoadingController) {
-    this.HomePage2 = new HomePage(app, navCtrl, partyService, modelCtrl, viewCtrl, auth, loadingCtrl);
-    this.partyService.getParties().then((data) => {
-
-      console.log(data);
-      this.parties = data;
-    });
+    this.HomePage = new HomePage(app, navCtrl, partyService, modelCtrl, viewCtrl, auth, loadingCtrl);
   	this.party = navParams.get('party');
-  	console.log('party');
-  	console.log(this.party);
+    this.parties = navParams.get('parties');
   }
 
   ionViewDidLoad() {
@@ -41,12 +35,10 @@ export class Modal {
   }
 
   deleteParty(){
-    console.log(this.party._id);
-    this.HomePage2.deleteParty(this.party);
+    this.HomePage.deleteParty(this.party);
   }
 
   editParty(){
-
     let modal = this.modelCtrl.create(Edit, {
   		party: this.party
   	});
@@ -56,7 +48,7 @@ export class Modal {
         this.parties.push(party);
         this.partyService.createParty(party);
         this.partyService.deleteParty(this.party._id);
-        this.HomePage2.deleteParty(this.party);
+        this.HomePage.deleteParty(this.party);
       }
     });
 

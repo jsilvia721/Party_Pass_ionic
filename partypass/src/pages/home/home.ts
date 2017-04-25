@@ -23,16 +23,16 @@ export class HomePage {
   loading: Loading;
 
   constructor(public app: App,public nav: NavController, public partyService: Parties, public modalCtrl: ModalController, public viewCtrl: ViewController, private auth: AuthService, private loadingCtrl: LoadingController) {
-    this.ionViewDidLoad();
-    let info = this.partyService.getParties();
-    console.log("THIS IS THE PARTY OBJECT")
-    console.log(info);
     // this.username = info;
     // this.email = info['email'];
+    let info = this.auth.getUserInfo();
+    this.username = info['name'];
+    this.email = info['email'];
 
   }
 
-  ionViewDidLoad(){
+  ionViewWillEnter(){
+    console.log("after delete party!");
     this.partyService.getParties().then((data) => {
       this.parties = data;
       console.log("Data");
@@ -41,8 +41,10 @@ export class HomePage {
   }
 
   itemSelected(party){
+    let parties = this.parties;
     this.nav.push(Modal, {
-      party: party
+      party: party,
+      parties: parties
     })
   }
 
@@ -51,16 +53,14 @@ export class HomePage {
 
     modal.onDidDismiss(party => {
       if(party){
-        // this.parties.push(party);
         this.partyService.createParty(party).then((info) =>{
-         
-         console.log(info);
-         this.partyService.getParties().then((data) => {
-           this.parties = data;
-           console.log("save parties home");
-           console.log(this.parties);
-         });
-       });
+          console.log(info);
+          this.partyService.getParties().then((data) => {
+            this.parties = data;
+            console.log("save parties home");
+            console.log(this.parties);
+          });
+        });
       }
     });
 
@@ -68,18 +68,14 @@ export class HomePage {
   }
 
   deleteParty(party){
-    //Remove locally
-    this.ionViewDidLoad();
-
-    let index = this.parties.indexOf(party);
-
-    if(index > -1){
-      this.parties.splice(index, 1);
-    }
-
     //Remove from database
-    this.partyService.deleteParty(party._id);
-    this.viewCtrl.dismiss(party);
+    this.partyService.deleteParty(party._id).then((info)=>{
+      console.log(info);
+      this.partyService.getParties().then((data) => {
+        console.log("save parties home");
+        this.nav.pop();
+      });
+    });
   }
 
   public logout() {
@@ -90,8 +86,8 @@ export class HomePage {
     // Now I'll access the root NavController for the app,
     // and use that to reset the nav stack
 
-// Now I'll access the root NavController for the app,
-// and use that to reset the nav stack
+    // Now I'll access the root NavController for the app,
+    // and use that to reset the nav stack
 
     const root = this.app.getRootNav();
     root.popToRoot();
