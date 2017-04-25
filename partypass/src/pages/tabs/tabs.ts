@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { AboutPage } from '../about/about';
 import { HomePage } from '../home/home';
 import { Parties } from '../../providers/parties';
-import { NavController} from 'ionic-angular';
+import { NavController, ModalController, ViewController} from 'ionic-angular';
 
 
 @Component({
@@ -15,11 +15,12 @@ export class TabsPage {
   tab2Root = AboutPage;
   AboutPage: any;
 
-  constructor(public navCtrl: NavController, public partyService: Parties) {
+  constructor(public navCtrl: NavController, public partyService: Parties, public modalCtrl: ModalController, public viewCtrl: ViewController) {
   	this.AboutPage = new AboutPage(navCtrl, partyService);
   }
 
   triggerMap(){
-  	this.AboutPage.ionViewDidLoad();
+  	let modal = this.AboutPage;
+  	modal.ionViewDidLoad();
   }
 }
