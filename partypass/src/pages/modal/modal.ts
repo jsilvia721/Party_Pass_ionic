@@ -2,10 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
 import { Parties } from '../../providers/parties';
 import { HomePage } from '../home/home';
-import { Registration } from '../registration/registration'
 import { Edit } from '../edit/edit'
-import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @IonicPage()
