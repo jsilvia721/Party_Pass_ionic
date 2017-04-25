@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { Autocomplete } from '../autocomplete/autocomplete';
+import { AuthService } from '../../providers/auth-service';
+
 
 @IonicPage()
 @Component({
@@ -15,13 +17,26 @@ export class Registration {
   startTime: any;
   endTime: any;
   host: any;
+  userinfo : any;
+  usercredentials : any;
+  username : any;
+  password : any;
+  userid : any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, private modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, private modalCtrl: ModalController, private auth: AuthService) {
+    this.usercredentials = auth.getUserInfo();
     this.address = {
       place: '',
       lat: 0,
       long: 0
     };
+    this.userinfo = {
+      username: this.usercredentials.email,
+      password: this.usercredentials.pass,
+      userid: 'userid HERE'
+    };
+    console.log("USER INFO");
+    console.log(auth.getUserInfo());
   }
 
   ionViewDidLoad() {
@@ -29,6 +44,8 @@ export class Registration {
   }
 
   save(): void {
+    console.log("REACHED SAVE AND THIS IS THE EMAIL")
+    console.log(this.usercredentials.email);
 
     let party = {
       address: this.address.place,
@@ -37,7 +54,8 @@ export class Registration {
       date: this.date,
       startTime: this.startTime,
       endTime: this.endTime,
-      host: this.host
+      host: this.host,
+      userinfo: this.userinfo
     };
     this.viewCtrl.dismiss(party);
   }

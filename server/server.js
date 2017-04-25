@@ -32,12 +32,18 @@ var Party = mongoose.model('Party', {
     endTime: String,
     host: String,
     lat: Number,
-    long: Number
+    long: Number,
+    userinfo: [
+    {
+        username : String,
+        password : String,
+        userid : String
+    }]
 });
  
 // Routes
  
-    // Get reviews
+    // Get parties
     app.get('/api/parties', function(req, res) {
  
         console.log("fetching parties");
@@ -67,6 +73,7 @@ var Party = mongoose.model('Party', {
             host : req.body.host,
             lat : req.body.lat,
             long : req.body.long,
+            userinfo : req.body.userinfo,
             done : false
         }, function(err, party) {
             if (err)
@@ -82,7 +89,7 @@ var Party = mongoose.model('Party', {
  
     });
  
-    // delete a review
+    // delete a party
     app.delete('/api/parties/:party_id', function(req, res) {
         console.log(req)
         Party.remove({

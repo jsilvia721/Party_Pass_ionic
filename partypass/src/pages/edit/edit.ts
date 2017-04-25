@@ -18,6 +18,7 @@ export class Edit {
   startTime: any;
   endTime: any;
   host: any;
+  userinfo : any;
 
   constructor(public navCtrl: NavController,public viewCtrl: ViewController, public navParams: NavParams, private modalCtrl: ModalController) {
     this.party = navParams.get('party');
@@ -45,6 +46,8 @@ export class Edit {
     this.startTime = this.party.startTime;
     this.endTime = this.party.endTime;
     this.host = this.party.host;
+    this.userinfo = this.party.userinfo;
+
   }
 
   ionViewDidLoad() {
@@ -63,7 +66,8 @@ export class Edit {
       date: this.date,
       startTime: this.startTime,
       endTime: this.endTime,
-      host: this.host
+      host: this.host,
+      userinfo: this.userinfo
     };
 
     this.viewCtrl.dismiss(party);

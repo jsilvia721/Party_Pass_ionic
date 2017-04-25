@@ -2,14 +2,15 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+
  
 export class User {
-  name: string;
   email: string;
+  pass: string;
  
-  constructor(name: string, email: string) {
-    this.name = name;
+  constructor(email: string, pass: string) {
     this.email = email;
+    this.pass = pass;
   }
 }
  
@@ -24,7 +25,7 @@ export class AuthService {
       return Observable.create(observer => {
         // At this point make a request to your backend to make a real check!
         let access = (credentials.password === "pass" && credentials.email === "email");
-        this.currentUser = new User('test', 'test');
+        this.currentUser = new User('email', 'pass');
         observer.next(access);
         observer.complete();
       });

@@ -24,9 +24,11 @@ export class HomePage {
 
   constructor(public app: App,public nav: NavController, public partyService: Parties, public modalCtrl: ModalController, public viewCtrl: ViewController, private auth: AuthService, private loadingCtrl: LoadingController) {
     this.ionViewDidLoad();
-    let info = this.auth.getUserInfo();
-    this.username = info['name'];
-    this.email = info['email'];
+    let info = this.partyService.getParties();
+    console.log("THIS IS THE PARTY OBJECT")
+    console.log(info);
+    // this.username = info;
+    // this.email = info['email'];
 
   }
 
