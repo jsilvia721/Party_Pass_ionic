@@ -2,7 +2,6 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Parties } from '../../providers/parties';
 
-
 /**
 * Generated class for the Map page.
 *
@@ -21,16 +20,19 @@ export class AboutPage {
   map: any;
   parties: any[];
   party: any;
-  constructor(public navCtrl: NavController, public partyService: Parties) {
 
+  constructor(public navCtrl: NavController, public partyService: Parties) {
+    console.log(this);
   }
 
-  ionViewDidLoad(){
+  ionViewWillEnter(){
   	this.partyService.getParties().then((data) => {
       console.log(data);
       this.parties = data;
       console.log("this is the parties object: " + this.parties);
       this.loadMap();
+
+      //markers for parties on map
       for (let party of this.parties){
         let latLng = new google.maps.LatLng(party.lat, party.long);
         let marker = new google.maps.Marker({
