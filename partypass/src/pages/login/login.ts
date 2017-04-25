@@ -27,8 +27,6 @@ export class Login {
     this.auth.login(this.registerCredentials).subscribe(allowed => {
       if (allowed) {
         this.nav.push(TabsPage);
-      } else {
-        this.showError("Access Denied");
       }
     },
       error => {
