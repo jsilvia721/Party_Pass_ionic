@@ -3,12 +3,6 @@ import { IonicPage, NavController, NavParams, ViewController, ModalController } 
 import { HomePage } from '../home/home';
 import { Autocomplete } from '../autocomplete/autocomplete';
 
-/**
- * Generated class for the Registration page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 @IonicPage()
 @Component({
   selector: 'page-registration',
@@ -16,11 +10,11 @@ import { Autocomplete } from '../autocomplete/autocomplete';
 })
 export class Registration {
 
-	address: any;
-	date: any;
-	startTime: any;
-	endTime: any;
-	host: any;
+  address: any;
+  date: any;
+  startTime: any;
+  endTime: any;
+  host: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, private modalCtrl: ModalController) {
     this.address = {
@@ -31,7 +25,7 @@ export class Registration {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad Registration');
+
   }
 
   save(): void {
@@ -45,9 +39,7 @@ export class Registration {
       endTime: this.endTime,
       host: this.host
     };
-
     this.viewCtrl.dismiss(party);
-
   }
 
   close(): void {
@@ -59,15 +51,12 @@ export class Registration {
 
     let me = this;
     modal.onDidDismiss(data => {
-      console.log('data passed to registration');
-      console.log(data);
       if(data){
-      this.address.place = data[0];
-      this.address.lat = data[1];
-      this.address.long = data[2];
-}
+        this.address.place = data[0];
+        this.address.lat = data[1];
+        this.address.long = data[2];
+      }
     });
     modal.present();
   }
-
 }
