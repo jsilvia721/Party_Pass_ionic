@@ -20,7 +20,7 @@ export class HomePage {
   constructor(public nav: NavController, public partyService: Parties, public modalCtrl: ModalController, public viewCtrl: ViewController) {
     this.ionViewDidLoad();
   }
-  
+
   ionViewDidLoad(){
     this.partyService.getParties().then((data) => {
       this.parties = data;
