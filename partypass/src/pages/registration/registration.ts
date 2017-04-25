@@ -61,10 +61,11 @@ export class Registration {
     modal.onDidDismiss(data => {
       console.log('data passed to registration');
       console.log(data);
+      if(data){
       this.address.place = data[0];
       this.address.lat = data[1];
       this.address.long = data[2];
-
+}
     });
     modal.present();
   }

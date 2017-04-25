@@ -41,8 +41,6 @@ export class Modal {
 
   deleteParty(){
     this.HomePage2.deleteParty(this.party);
-
-
   }
 
   editParty(){
@@ -55,6 +53,7 @@ export class Modal {
         console.log(party);
         this.parties.push(party);
         this.partyService.createParty(party);
+        this.partyService.deleteParty(this.party._id);
         this.HomePage2.deleteParty(this.party);
       }
     });
