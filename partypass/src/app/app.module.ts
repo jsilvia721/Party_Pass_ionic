@@ -11,6 +11,9 @@ import { Registration } from '../pages/registration/registration';
 import { Edit } from '../pages/edit/edit'
 import { Parties } from '../providers/parties'
 import { Autocomplete } from '../pages/autocomplete/autocomplete';
+import { AuthService } from './../providers/auth-service';
+import { Register } from '../pages/register/register';
+import { Login } from '../pages/login/login';
 import { Http, Headers, HttpModule } from '@angular/http';
 import {
  GoogleMaps,
@@ -34,7 +37,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     Modal,
     Registration,
     Autocomplete,
-    Edit
+    Edit,
+    Register,
+    Login
   ],
   imports: [
     BrowserModule,
@@ -50,13 +55,16 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     Modal,
     Registration,
     Edit,
-    Autocomplete
+    Autocomplete,
+    Register,
+    Login
   ],
   providers: [
     StatusBar,
     SplashScreen,
     GoogleMaps,
     Parties,
+    AuthService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

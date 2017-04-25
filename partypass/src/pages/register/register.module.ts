@@ -1,0 +1,13 @@
+import { NgModule } from '@angular/core';
+import { IonicModule } from 'ionic-angular';
+import { Register } from './register';
+
+@NgModule({
+  declarations: [
+    Register,
+  ],
+  exports: [
+    Register
+  ]
+})
+export class RegisterModule {}
