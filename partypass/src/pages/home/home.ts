@@ -5,8 +5,8 @@ import { Registration } from '../registration/registration'
 import { Parties } from '../../providers/parties';
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
+import { AuthService } from '../../providers/auth-service';
 import 'rxjs/add/operator/map';
-
 
 @Component({
   selector: 'page-home',
@@ -16,11 +16,14 @@ import 'rxjs/add/operator/map';
 export class HomePage {
 
 	parties: any[];
-	// registrationForm: any[];
+	username = '';
+	email = '';
 
-  constructor(public nav: NavController, public partyService: Parties, public modalCtrl: ModalController, public viewCtrl: ViewController) {
+  constructor(public nav: NavController, public partyService: Parties, public modalCtrl: ModalController, public viewCtrl: ViewController, private auth: AuthService) {
     this.ionViewDidLoad();
-
+    let info = this.auth.getUserInfo();
+    this.username = info['name'];
+    this.email = info['email'];
   }
 
   ionViewDidLoad(){
@@ -77,4 +80,13 @@ export class HomePage {
     this.viewCtrl.dismiss(party);
   }
 
+  public logout() {
+    this.auth.logout().subscribe(succ => {
+      this.nav.setRoot('Login')
+    });
+  }
+
 }
+
+
+

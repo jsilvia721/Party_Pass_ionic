@@ -6,6 +6,7 @@ import { Registration } from '../registration/registration'
 import { Edit } from '../edit/edit'
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
+import { AuthService } from '../../providers/auth-service';
 import 'rxjs/add/operator/map';
 
 /**
@@ -24,8 +25,8 @@ export class Modal {
 	party: any;
   parties: any[];
   HomePage2: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public partyService: Parties, public viewCtrl: ViewController, public modelCtrl: ModalController) {
-    this.HomePage2 = new HomePage(navCtrl, partyService, modelCtrl, viewCtrl);
+  constructor(public navCtrl: NavController, public navParams: NavParams, public partyService: Parties, public viewCtrl: ViewController, public modelCtrl: ModalController, private auth: AuthService) {
+    this.HomePage2 = new HomePage(navCtrl, partyService, modelCtrl, viewCtrl, auth);
     this.partyService.getParties().then((data) => {
       console.log(data);
       this.parties = data;
