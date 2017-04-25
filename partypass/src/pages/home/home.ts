@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController, ViewController, App} from 'ionic-angular';
+import { NavController, ModalController, ViewController, App, LoadingController, Loading} from 'ionic-angular';
 import { Modal } from '../modal/modal';
 import { Registration } from '../registration/registration'
 import { Parties } from '../../providers/parties';
@@ -20,8 +20,9 @@ export class HomePage {
   parties: any[];
   username = '';
   email = '';
+  loading: Loading;
 
-  constructor(public app: App,public nav: NavController, public partyService: Parties, public modalCtrl: ModalController, public viewCtrl: ViewController, private auth: AuthService) {
+  constructor(public app: App,public nav: NavController, public partyService: Parties, public modalCtrl: ModalController, public viewCtrl: ViewController, private auth: AuthService, private loadingCtrl: LoadingController) {
     this.ionViewDidLoad();
     let info = this.auth.getUserInfo();
     this.username = info['name'];
@@ -71,6 +72,7 @@ export class HomePage {
 
   public logout() {
     // document.querySelector("ion-tab")['style'].display = 'none';
+    this.showLoading();
     this.auth.logout();
 
     // Now I'll access the root NavController for the app,
@@ -85,5 +87,12 @@ export class HomePage {
     //   this.nav.setRoot(Login);
     //   this.nav.popToRoot();
     // });
+  }
+  showLoading() {
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...',
+      dismissOnPageChange: true
+    });
+    this.loading.present();
   }
 }

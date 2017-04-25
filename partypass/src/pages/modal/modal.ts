@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { App,IonicPage, NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
+import { App,IonicPage, NavController, NavParams, ViewController, ModalController, LoadingController, Loading } from 'ionic-angular';
 import { Parties } from '../../providers/parties';
 import { HomePage } from '../home/home';
 import { Registration } from '../registration/registration'
@@ -24,8 +24,8 @@ export class Modal {
 	party: any;
   parties: any[];
   HomePage2: any;
-  constructor(public app: App,public navCtrl: NavController, public navParams: NavParams, public partyService: Parties, public viewCtrl: ViewController, public modelCtrl: ModalController, private auth: AuthService) {
-    this.HomePage2 = new HomePage(app, navCtrl, partyService, modelCtrl, viewCtrl, auth);
+  constructor(public app: App,public navCtrl: NavController, public navParams: NavParams, public partyService: Parties, public viewCtrl: ViewController, public modelCtrl: ModalController, private auth: AuthService, private loadingCtrl: LoadingController) {
+    this.HomePage2 = new HomePage(app, navCtrl, partyService, modelCtrl, viewCtrl, auth, loadingCtrl);
     this.partyService.getParties().then((data) => {
       console.log(data);
       this.parties = data;
