@@ -7,7 +7,7 @@ import { Edit } from '../edit/edit'
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
-
+import { AuthService } from '../../providers/auth-service';
 /**
  * Generated class for the Modal page.
  *
@@ -24,8 +24,8 @@ export class Modal {
 	party: any;
   parties: any[];
   HomePage2: any;
-  constructor(public app: App,public navCtrl: NavController, public navParams: NavParams, public partyService: Parties, public viewCtrl: ViewController, public modelCtrl: ModalController) {
-    this.HomePage2 = new HomePage(app, navCtrl, partyService, modelCtrl, viewCtrl);
+  constructor(public app: App,public navCtrl: NavController, public navParams: NavParams, public partyService: Parties, public viewCtrl: ViewController, public modelCtrl: ModalController, private auth: AuthService) {
+    this.HomePage2 = new HomePage(app, navCtrl, partyService, modelCtrl, viewCtrl, auth);
     this.partyService.getParties().then((data) => {
       console.log(data);
       this.parties = data;
