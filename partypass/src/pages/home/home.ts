@@ -24,25 +24,22 @@ export class HomePage {
     let info = this.auth.getUserInfo();
     this.username = info['name'];
     this.email = info['email'];
+
   }
 
   ionViewDidLoad(){
-
     this.partyService.getParties().then((data) => {
-      console.log(data);
       this.parties = data;
     });
-
   }
 
   itemSelected(party){
-  	this.nav.push(Modal, {
-  		party: party
-  	})
+    this.nav.push(Modal, {
+      party: party
+    })
   }
 
   addParty(){
-
     let modal = this.modalCtrl.create(Registration);
 
     modal.onDidDismiss(party => {
@@ -53,27 +50,17 @@ export class HomePage {
     });
 
     modal.present();
-
   }
 
-   deleteParty(party){
-
+  deleteParty(party){
     //Remove locally
-    console.log('home delete');
-    console.log(party);
-    console.log(party._id);
+    this.ionViewDidLoad();
 
-    console.log(this.parties);
+    let index = this.parties.indexOf(party);
 
-      this.ionViewDidLoad();
-
-      console.log(this.parties);
-
-      let index = this.parties.indexOf(party);
-
-      if(index > -1){
-        this.parties.splice(index, 1);
-      }
+    if(index > -1){
+      this.parties.splice(index, 1);
+    }
 
     //Remove from database
     this.partyService.deleteParty(party._id);
@@ -85,7 +72,6 @@ export class HomePage {
       this.nav.setRoot('Login')
     });
   }
-
 }
 
 
