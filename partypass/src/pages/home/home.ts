@@ -17,7 +17,7 @@ import 'rxjs/add/operator/map';
 
 export class HomePage {
 
-  parties: any[];
+  parties: any;
   username = '';
   email = '';
   loading: Loading;
@@ -33,6 +33,8 @@ export class HomePage {
   ionViewDidLoad(){
     this.partyService.getParties().then((data) => {
       this.parties = data;
+      console.log("Data");
+      console.log(data);
     });
   }
 
@@ -47,8 +49,16 @@ export class HomePage {
 
     modal.onDidDismiss(party => {
       if(party){
-        this.parties.push(party);
-        this.partyService.createParty(party);
+        // this.parties.push(party);
+        this.partyService.createParty(party).then((info) =>{
+         
+         console.log(info);
+         this.partyService.getParties().then((data) => {
+           this.parties = data;
+           console.log("save parties home");
+           console.log(this.parties);
+         });
+       });
       }
     });
 

@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map';
  
 @Injectable()
 export class Parties {
- 
+
   data: any;
  
   constructor(public http: Http) {
@@ -12,10 +12,6 @@ export class Parties {
   }
  
   getParties(){
- 
-    if (this.data) {
-      return Promise.resolve(this.data);
-    }
  
     return new Promise(resolve => {
  
@@ -29,17 +25,19 @@ export class Parties {
  
   }
  
-  createParty(party){
- 
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
- 
-    this.http.post('http://localhost:8080/api/parties', JSON.stringify(party), {headers: headers})
-      .subscribe(res => {
-        console.log(res.json());
-      });
- 
-  }
+createParty(party){
+
+   let headers = new Headers();
+   headers.append('Content-Type', 'application/json');
+   return new Promise(resolve =>{
+     this.http.post('http://localhost:8080/api/parties', JSON.stringify(party), {headers: headers})
+       .subscribe(res => {
+         console.log("create party");
+         resolve("ok");
+       });
+   });
+
+ }
  
   deleteParty(id){
  

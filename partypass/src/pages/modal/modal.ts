@@ -22,11 +22,12 @@ import { AuthService } from '../../providers/auth-service';
 export class Modal {
 
 	party: any;
-  parties: any[];
+  parties: any;
   HomePage2: any;
   constructor(public app: App,public navCtrl: NavController, public navParams: NavParams, public partyService: Parties, public viewCtrl: ViewController, public modelCtrl: ModalController, private auth: AuthService, private loadingCtrl: LoadingController) {
     this.HomePage2 = new HomePage(app, navCtrl, partyService, modelCtrl, viewCtrl, auth, loadingCtrl);
     this.partyService.getParties().then((data) => {
+
       console.log(data);
       this.parties = data;
     });

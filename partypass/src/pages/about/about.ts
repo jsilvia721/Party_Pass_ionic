@@ -12,7 +12,7 @@ export class AboutPage {
 
   @ViewChild('map') mapElement: ElementRef;
   map: any;
-  parties: any[];
+  parties: any;
   party: any;
 
   constructor(public navCtrl: NavController, public partyService: Parties) {
@@ -22,9 +22,10 @@ export class AboutPage {
   ionViewWillEnter(){
     this.partyService.getParties().then((data) => {
       this.parties = data;
+      console.log("parties in the maps");
+      console.log(data);
       this.loadMap();
 
-      //markers for parties on map
       for (let party of this.parties){
         let latLng = new google.maps.LatLng(party.lat, party.long);
         let marker = new google.maps.Marker({
