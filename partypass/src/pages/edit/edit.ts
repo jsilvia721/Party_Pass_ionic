@@ -18,6 +18,9 @@ export class Edit {
 
 party: any;
 address: any;
+place: any;
+lat: any;
+long: any;
 date: any;
 startTime: any;
 endTime: any;
@@ -27,7 +30,25 @@ host: any;
 
     this.party = navParams.get('party');
 
-    this.address = this.party.address;
+// if(this.party.address){
+//     this.address = {
+//       place: this.party.address.place,
+//       lat: this.party.address.lat,
+//       long: this.party.address.long
+//     };
+//   }
+//   else{
+//     this.address = {
+//       place: '',
+//       lat: 0,
+//       long: 0
+//     };
+//
+//   }
+    this.place = this.party.address;
+    this.lat = this.party.lat;
+    this.long = this.party.long;
+
     this.date = this.party.date;
     this.startTime = this.party.startTime;
     this.endTime = this.party.endTime;
@@ -48,7 +69,9 @@ host: any;
   save(): void {
 
     let party = {
-      address: this.address.place,
+      address: this.place,
+      lat: this.lat,
+      long: this.long,
       date: this.date,
       startTime: this.startTime,
       endTime: this.endTime,
@@ -61,10 +84,16 @@ host: any;
 
   showAddressModal () {
     let modal = this.modalCtrl.create(Autocomplete);
+
     let me = this;
     modal.onDidDismiss(data => {
-      this.address.place = data;
-
+      console.log('data passed to registration');
+      console.log(data);
+      if(data){
+      this.place = data[0];
+      this.lat = data[1];
+      this.long = data[2];
+    }
     });
     modal.present();
   }

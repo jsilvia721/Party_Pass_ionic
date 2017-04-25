@@ -26,6 +26,10 @@ export class Modal {
   HomePage2: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public partyService: Parties, public viewCtrl: ViewController, public modelCtrl: ModalController) {
     this.HomePage2 = new HomePage(navCtrl, partyService, modelCtrl, viewCtrl);
+    this.partyService.getParties().then((data) => {
+      console.log(data);
+      this.parties = data;
+    });
   	this.party = navParams.get('party');
   	console.log('party');
   	console.log(this.party);
@@ -48,6 +52,7 @@ export class Modal {
   	});
     modal.onDidDismiss(party => {
       if(party){
+        console.log(party);
         this.parties.push(party);
         this.partyService.createParty(party);
         this.deleteParty();

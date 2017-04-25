@@ -16,12 +16,12 @@
 
 
 <ion-content padding>
-
 	<ion-list>
 
 	  <ion-item>
 	    <ion-label floating>Address</ion-label>
-	    <ion-input (click)="showAddressModal()" [(ngModel)]="address.place" placeholder="{{party.address}}" type="text">{{ party.address }}</ion-input>
+
+	    <ion-input (click)="showAddressModal()" [(ngModel)]="place" type="text"></ion-input>
 	  </ion-item>
 
 	  <ion-item>
@@ -42,7 +42,7 @@
 
 	  <ion-item>
 	    <ion-label floating>Host(s)</ion-label>
-	    <ion-input type="text" [(ngModel)]="host">hello</ion-input>
+	    <ion-input type="text" [(ngModel)]="host"></ion-input>
 	  </ion-item>
 
 	</ion-list>

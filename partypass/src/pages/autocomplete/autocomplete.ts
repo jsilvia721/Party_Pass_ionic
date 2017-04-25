@@ -55,7 +55,7 @@ export class Autocomplete {
     this.service.getPlacePredictions({ input: this.autocomplete.query }, function (predictions, status) {
       me.autocompleteItems = [];
       me.zone.run(function () {
-        if (predictions){
+        if (status === 'OK'){
           predictions.forEach(function (prediction) {
             me.autocompleteItems.push(prediction.description);
           });
