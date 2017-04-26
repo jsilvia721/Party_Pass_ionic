@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { Autocomplete } from '../autocomplete/autocomplete';
@@ -13,6 +13,7 @@ import { AuthService } from '../../providers/auth-service';
 export class Registration {
 
   address: any;
+  error: boolean;
   date: any;
   startTime: any;
   endTime: any;
@@ -24,6 +25,7 @@ export class Registration {
   notification : any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, private modalCtrl: ModalController, private auth: AuthService) {
+    this.error = false;
     this.usercredentials = auth.getUserInfo();
     this.address = {
       place: '',
@@ -46,7 +48,7 @@ export class Registration {
   save(): void {
     console.log("REACHED SAVE AND THIS IS THE EMAIL")
     console.log(this.usercredentials.email);
-
+    if(this.address.place && this.date && this.startTime && this.endTime && this.host){
     let party = {
       address: this.address.place,
       lat: this.address.lat,
@@ -58,6 +60,20 @@ export class Registration {
       userinfo: this.userinfo
     };
     this.viewCtrl.dismiss(party);
+  }
+  else{
+    console.log(this.error);
+    if(!this.error){
+    this.error = true;
+    var s = document.createElement("strong");
+    s.style.color="red";
+    var t = document.createTextNode("* One or more required fileds missing");
+    s.appendChild(t);
+    document.getElementById("error").appendChild(s);
+    console.log("got here");
+
+}
+  }
   }
 
   close(): void {

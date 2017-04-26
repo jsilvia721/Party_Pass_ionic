@@ -10,6 +10,7 @@ import { Autocomplete } from '../autocomplete/autocomplete';
 export class Edit {
 
   party: any;
+  error: boolean;
   address: any;
   place: any;
   lat: any;
@@ -21,6 +22,7 @@ export class Edit {
   userinfo : any;
 
   constructor(public navCtrl: NavController,public viewCtrl: ViewController, public navParams: NavParams, private modalCtrl: ModalController) {
+    this.error = false;
     this.party = navParams.get('party');
 
     // if(this.party.address){
@@ -59,6 +61,7 @@ export class Edit {
   }
 
   save(): void {
+    if(this.place && this.date && this.startTime && this.endTime && this.host){
     let party = {
       address: this.place,
       lat: this.lat,
@@ -69,8 +72,18 @@ export class Edit {
       host: this.host,
       userinfo: this.userinfo
     };
-
     this.viewCtrl.dismiss(party);
+  }
+  else{
+    if(!this.error){
+    this.error = true;
+    var s = document.createElement("strong");
+    s.style.color="red";
+    var t = document.createTextNode("* One or more required fileds missing");
+    s.appendChild(t);
+    document.getElementById("error2").appendChild(s);
+}
+  }
   }
 
   showAddressModal () {
