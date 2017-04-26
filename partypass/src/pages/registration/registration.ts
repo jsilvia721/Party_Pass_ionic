@@ -21,7 +21,7 @@ export class Registration {
   usercredentials : any;
   username : any;
   password : any;
-  userid : any;
+  notification : any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, private modalCtrl: ModalController, private auth: AuthService) {
     this.usercredentials = auth.getUserInfo();
@@ -33,7 +33,7 @@ export class Registration {
     this.userinfo = {
       username: this.usercredentials.email,
       password: this.usercredentials.pass,
-      userid: 'userid HERE'
+      notification: 'YA DON FUCKED UP AARON'
     };
     console.log("USER INFO");
     console.log(auth.getUserInfo());

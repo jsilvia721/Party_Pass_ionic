@@ -21,7 +21,7 @@ export class Login {
     this.userinfo = {
       username: '',
       password: '',
-      userid : 0
+      notification : '',
     };
     this.partyService.getParties().then((data) => {
 
@@ -39,16 +39,20 @@ export class Login {
     this.nav.push(Register)
   }
   public login() {
-    // this.showLoading()
+    this.showLoading()
     this.userinfo = {
       username: this.registerCredentials.email,
       password: this.registerCredentials.password,
-      userid: 0
+      notification: ''
   }
   console.log(this.userinfo);
     this.auth.login(this.registerCredentials).subscribe(allowed => {
       if (allowed) {
-        this.nav.push(TabsPage);
+        if (this.registerCredentials.email == 'admin'){
+          this.nav.push(TabsPage);
+        }else{
+          this.nav.push(HomePage);
+        }
       }
     },
       error => {

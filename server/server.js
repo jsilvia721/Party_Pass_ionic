@@ -37,7 +37,7 @@ var Party = mongoose.model('Party', {
     {
         username : String,
         password : String,
-        userid : String
+        notification : String
     }]
 
 });
