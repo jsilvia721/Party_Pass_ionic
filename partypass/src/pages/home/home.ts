@@ -38,7 +38,6 @@ export class HomePage {
       console.log(data);
       this.checkUser();
 
-
     });
 
   }
@@ -64,6 +63,7 @@ export class HomePage {
 
   itemSelected(party){
     let parties = this.parties;
+    console.log("this one");
     console.log(party);
     this.nav.push(Modal, {
       party: party,

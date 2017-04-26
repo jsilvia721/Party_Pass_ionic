@@ -10,24 +10,15 @@
 
 <ion-content>
   <ion-list>
-
-    <ion-buttons *ngIf="email == 'admin'">
-      <button ion-item *ngFor="let party of parties" (click)="itemSelected(party)">
+    <ion-buttons *ngFor="let party of parties">
+      <button ion-item *ngIf="party.userinfo[0].notification == ''" (click)="itemSelected(party)">
+        {{ party.address }}
+      </button>
+      <button ion-item *ngIf="party.userinfo[0].notification != ''" (click)="itemSelected(party)">
+        <p style="color:red">(Warned) </p>
         {{ party.address }}
       </button>
     </ion-buttons>
-
-    <ng-container *ngIf="email != 'admin'"> 
-      <ion-buttons  *ngFor="let party of parties">
-        <button ion-item *ngIf="party.userinfo[0].notification == ''" (click)="itemSelected(party)">
-          {{ party.address }}
-        </button>
-        <button ion-item *ngIf="party.userinfo[0].notification != ''" (click)="itemSelected(party)">
-          <p style="color:red">(Warned) </p>
-          {{ party.address }}
-        </button>
-      </ion-buttons>
-    </ng-container>
   </ion-list>
 
   <ion-buttons *ngIf="email != 'admin'">
