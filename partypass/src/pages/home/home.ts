@@ -37,7 +37,30 @@ export class HomePage {
       this.parties = data;
       console.log("Data");
       console.log(data);
+      this.checkUser();
+    
+  
     });
+
+  }
+
+  checkUser(){
+              console.log("about to check the user");
+    if(this.username != 'admin'){
+      console.log("not an admin");
+      let userParties = [];
+      for (let party of this.parties){
+        console.log(party.userinfo[0].username);
+        console.log(this.email);
+         if(party.userinfo[0].username == this.email){
+           console.log(this.email);
+           console.log("versus");
+           console.log(party.userinfo[0]);
+           userParties.push(party);
+         }
+      }
+      this.parties = userParties;
+      }
   }
 
   itemSelected(party){
@@ -59,6 +82,7 @@ export class HomePage {
             this.parties = data;
             console.log("save parties home");
             console.log(this.parties);
+            this.checkUser();
           });
         });
       }
