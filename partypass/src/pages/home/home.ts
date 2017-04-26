@@ -26,8 +26,8 @@ export class HomePage {
     // this.username = info;
     // this.email = info['email'];
     let info = this.auth.getUserInfo();
-    this.username = info['name'];
-    this.email = info['email'];
+    this.username = info.pass;
+    this.email = info.email;
 
   }
 
