@@ -53,6 +53,8 @@ export class Login {
         }else{
           this.nav.push(HomePage);
         }
+      }else{
+        this.nav.push(Login);
       }
     },
       error => {
