@@ -46,7 +46,7 @@ export class HomePage {
 
   checkUser(){
               console.log("about to check the user");
-    if(this.username != 'admin'){
+    if(this.email != 'admin'){
       console.log("not an admin");
       let userParties = [];
       for (let party of this.parties){
@@ -58,7 +58,7 @@ export class HomePage {
            console.log(party.userinfo[0]);
            userParties.push(party);
          }
-      }
+               }
       this.parties = userParties;
       }
   }
