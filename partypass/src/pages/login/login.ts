@@ -54,10 +54,12 @@ export class Login {
           this.nav.push(HomePage);
         }
       }
+
     },
       error => {
         this.showError(error);
       });
+
   }
 
   showLoading() {
@@ -69,8 +71,8 @@ export class Login {
   }
 
   showError(text) {
-    this.loading.dismiss().catch(() => {});
-
+    this.loading.dismiss();
+ 
     let alert = this.alertCtrl.create({
       title: 'Fail',
       subTitle: text,
