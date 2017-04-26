@@ -43,6 +43,7 @@ import { AuthService } from '../../providers/auth-service';
    ionViewDidLoad() {
      console.log('ionViewDidLoad Modal');
      if(this.party.userinfo[0].notification != ''){
+       this.error = true;
        var s = document.createElement("strong");
        s.style.color="red";
        var t = document.createTextNode("* Party Has Been Warned");
