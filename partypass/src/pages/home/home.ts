@@ -21,7 +21,6 @@ export class HomePage {
   username = '';
   email = '';
   loading: Loading;
-  //notification: '';
 
   constructor(public app: App,public nav: NavController, public partyService: Parties, public modalCtrl: ModalController, public viewCtrl: ViewController, private auth: AuthService, private loadingCtrl: LoadingController) {
     let info = this.auth.getUserInfo();
