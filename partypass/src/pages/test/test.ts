@@ -29,7 +29,7 @@ export class Test {
         "userinfo": ["user1", "pass1", "notification"]
       },
       {
-        "address": "22 x way",
+        "address": "will x way",
         "date":"What does the 3 represent in the number below? 3051",
         "startTime":"10:00",
         "endTime": "10:00",
@@ -39,7 +39,7 @@ export class Test {
         "userinfo": ["user1", "pass1", "notification"]
       },
       {
-        "address": "22 x way",
+        "address": "bob x way",
         "date":"What does the 3 represent in the number below? 3051",
         "startTime":"10:00",
         "endTime": "10:00",
@@ -49,7 +49,7 @@ export class Test {
         "userinfo": ["user1", "pass1", "notification"]
       },
       {
-        "address": "22 x way",
+        "address": "we good x way",
         "date":"What does the 3 represent in the number below? 3051",
         "startTime":"10:00",
         "endTime": "10:00",
