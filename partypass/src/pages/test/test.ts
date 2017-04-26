@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { Parties } from '../../providers/parties';
+import { Http, Headers } from '@angular/http';
 /**
 * Generated class for the Test page.
 *
@@ -14,9 +15,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class Test {
   parties: any;
-
-
-  constructor() {
+  getParties: any;
+  static get parameters() {
+    return [[Http]];
+  }
+  constructor(public partyService: Parties) {
     this.parties = [
       {
         "address": "22 x way",
@@ -70,8 +73,22 @@ export class Test {
       }
     ];
   }
+  getPartiesTest(){
+    //this does not work because we do not have an http request for the service
+    console.log("in get parties test");
+    console.log(this);
+    // this.partyService.getParties().then((data) => {
+    //   this.getParties = data;
+    //   console.log("Data");
+    //   console.log(data);
+    //   //return this.getParties;
+    //   //this.checkUser();
+    // });
+    console.log("called the service");
+  }
 
-  getParties(){
+  myMadeParties(){
+    console.log("making parties");
     return this.parties;
   }
 

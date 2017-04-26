@@ -1,13 +1,29 @@
 import { partypass } from './partypass';
 import {} from 'jasmine';
 import { Test } from '../pages/test/test';
+import { Parties } from './parties';
+import { addProviders, inject } from '@angular/core/testing';
+import { Http, BaseRequestOptions } from '@angular/http';
+import { MockBackend } from '@angular/http/testing';
 
 let testPage : any;
+let passParty : any;
+let http: Http;
+let testParties: any;
+
 describe('HomePage testing', () => {
+
 	beforeEach(() => {
-		testPage = new Test();
-		//need to get that working
+
+		testPage = new Test(passParty);
 	});
+
+	// http.get('http://localhost:8080/api/parties')
+	// .map(res => res.json())
+	// .subscribe(data => {
+	// 	testParties = data;
+	// 	console.log(testParties);
+	// });
 	//and this
 	// this.partyCaller.getParties().then((data) => {
 	//   this.parties = data;
@@ -18,7 +34,11 @@ describe('HomePage testing', () => {
 	//for(x in partie)
 	console.log('onSuccess');
 	it('test sign up account - user', () => {
-		var p = testPage.getParties();
+		//get parties from get request in providers/parties
+		testPage.getPartiesTest();
+		// console.log(testParties);
+
+		var p = testPage.myMadeParties();
 		//all the parties object
 		console.log(p);
 		//gets the address of the first party
