@@ -1,16 +1,12 @@
 import { partypass } from './partypass';
-import {jasmine} from 'jasmine';
+import {} from 'jasmine';
 import { Test } from '../pages/test/test';
-import { Parties } from '../providers/parties';
-import { Http, Headers } from '@angular/http';
 
 let testPage : any;
-let partyCaller: any;
 describe('HomePage testing', () => {
 	beforeEach(() => {
 		testPage = new Test();
 		//need to get that working
-		//partyCaller: new Parties(Http);
 	});
 	//and this
 	// this.partyCaller.getParties().then((data) => {
@@ -23,10 +19,15 @@ describe('HomePage testing', () => {
 	console.log('onSuccess');
 	it('test sign up account - user', () => {
 		var p = testPage.getParties();
+		//all the parties object
 		console.log(p);
+		//gets the address of the first party
 		console.log(p[0].address);
+		//gets the length of the p
 		var length = Object.keys(p).length;
 		console.log(Object.keys(p).length);
+
+		//loops through and prints all the parties
 		for(var i=0;i<length;i++) {
 		  console.log(p[i].address);
 		}
