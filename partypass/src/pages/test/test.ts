@@ -91,7 +91,24 @@ export class Test {
     console.log("making parties");
     return this.parties;
   }
-
+  checkUser(email){
+    console.log("about to check the user");
+    if(email != 'admin'){
+      console.log("not an admin");
+      let userParties = [];
+      for (let party of this.parties){
+        console.log(party.userinfo[0].username);
+        console.log(email);
+         if(party.userinfo[0].username == email){
+           console.log(email);
+           console.log("versus");
+           console.log(party.userinfo[0]);
+           userParties.push(party);
+         }
+               }
+      this.parties = userParties;
+      }
+  }
 
 
   }
