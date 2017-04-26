@@ -12,13 +12,21 @@
   <p><strong>End Time:</strong> {{ party.endTime }}</p>
   <p><strong>Host(s):</strong> {{ party.host }}</p>
 
+<ion-buttons *ngIf="email != 'admin'">
   <button ion-button (click)="editParty()">
     <ion-icon name="create"></ion-icon>
     Edit
   </button>
-
   <button ion-button color="danger" (click)="deleteParty()">
     <ion-icon name="trash"></ion-icon>
     Delete
   </button>
+  </ion-buttons>
+  <ion-buttons *ngIf="email === 'admin'">
+  <button ion-button color="danger" (click)="notify()">
+    <ion-icon name="warning"></ion-icon>
+    Warn
+  </button>
+  </ion-buttons>
+  <p id="error3"></p>
 </ion-content>

@@ -21,11 +21,11 @@ export class HomePage {
   username = '';
   email = '';
   loading: Loading;
+  //notification: '';
 
   constructor(public app: App,public nav: NavController, public partyService: Parties, public modalCtrl: ModalController, public viewCtrl: ViewController, private auth: AuthService, private loadingCtrl: LoadingController) {
-    // this.username = info;
-    // this.email = info['email'];
     let info = this.auth.getUserInfo();
+
     this.username = info.pass;
     this.email = info.email;
 
@@ -38,33 +38,34 @@ export class HomePage {
       console.log("Data");
       console.log(data);
       this.checkUser();
-    
-  
+
+
     });
 
   }
 
   checkUser(){
-              console.log("about to check the user");
+    console.log("about to check the user");
     if(this.email != 'admin'){
       console.log("not an admin");
       let userParties = [];
       for (let party of this.parties){
         console.log(party.userinfo[0].username);
         console.log(this.email);
-         if(party.userinfo[0].username == this.email){
-           console.log(this.email);
-           console.log("versus");
-           console.log(party.userinfo[0]);
-           userParties.push(party);
-         }
-               }
-      this.parties = userParties;
+        if(party.userinfo[0].username == this.email){
+          console.log(this.email);
+          console.log("versus");
+          console.log(party.userinfo[0]);
+          userParties.push(party);
+        }
       }
+      this.parties = userParties;
+    }
   }
 
   itemSelected(party){
     let parties = this.parties;
+    console.log(party);
     this.nav.push(Modal, {
       party: party,
       parties: parties
@@ -116,15 +117,15 @@ export class HomePage {
     const root = this.app.getRootNav();
     root.popToRoot();
     // this.auth.logout().subscribe(succ => {
-    //   this.nav.setRoot(Login);
-    //   this.nav.popToRoot();
-    // });
+      //   this.nav.setRoot(Login);
+      //   this.nav.popToRoot();
+      // });
+    }
+    showLoading() {
+      this.loading = this.loadingCtrl.create({
+        content: 'Please wait...',
+        dismissOnPageChange: true
+      });
+      this.loading.present();
+    }
   }
-  showLoading() {
-    this.loading = this.loadingCtrl.create({
-      content: 'Please wait...',
-      dismissOnPageChange: true
-    });
-    this.loading.present();
-  }
-}

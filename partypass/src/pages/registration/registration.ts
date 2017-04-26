@@ -35,7 +35,7 @@ export class Registration {
     this.userinfo = {
       username: this.usercredentials.email,
       password: this.usercredentials.pass,
-      notification: 'YA DON FUCKED UP AARON'
+      notification: ''
     };
     console.log("USER INFO");
     console.log(auth.getUserInfo());
