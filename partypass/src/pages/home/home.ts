@@ -21,13 +21,12 @@ export class HomePage {
   username = '';
   email = '';
   loading: Loading;
-
   constructor(public app: App,public nav: NavController, public partyService: Parties, public modalCtrl: ModalController, public viewCtrl: ViewController, private auth: AuthService, private loadingCtrl: LoadingController) {
     // this.username = info;
     // this.email = info['email'];
     let info = this.auth.getUserInfo();
-    this.username = info.pass;
-    this.email = info.email;
+    this.username = info['name'];
+    this.email = info['email'];
 
   }
 
