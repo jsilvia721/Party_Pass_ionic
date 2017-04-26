@@ -16,10 +16,11 @@
     <ion-item-options>
     </ion-item-options>
   </ion-list>
-  <ion-item *ngIf="email != 'admin'">
+
+    <ion-buttons *ngIf="email != 'admin'">
     <button ion-button full (click)="addParty()">
       Register Party
     </button>
-  </ion-item>
+    </ion-buttons>
 
 </ion-content>
