@@ -6,9 +6,6 @@ import { Test } from './test';
   declarations: [
     Test,
   ],
-  imports: [
-    IonicModule.forChild(Test),
-  ],
   exports: [
     Test
   ]
