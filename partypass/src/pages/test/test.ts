@@ -16,10 +16,21 @@ import { Http, Headers } from '@angular/http';
 export class Test {
   parties: any;
   getParties: any;
+  party: any;
   static get parameters() {
     return [[Http]];
   }
   constructor(public partyService: Parties) {
+    this.party = [{
+      "address": "22 x way",
+      "date":"today",
+      "startTime":"10:00",
+      "endTime": "11:00",
+      "host" : "host5",
+      "lat" : 12,
+      "long" : 12,
+      "userinfo": ["user1", "pass1", "notification"]
+    }]
     this.parties = [
       {
         "address": "22 x way",
@@ -75,8 +86,8 @@ export class Test {
   }
   getPartiesTest(){
     //this does not work because we do not have an http request for the service
-    console.log("in get parties test");
-    console.log(this);
+    //console.log("in get parties test");
+    //console.log(this);
     // this.partyService.getParties().then((data) => {
     //   this.getParties = data;
     //   console.log("Data");
@@ -84,12 +95,15 @@ export class Test {
     //   //return this.getParties;
     //   //this.checkUser();
     // });
-    console.log("called the service");
+    //console.log("called the service");
   }
 
   myMadeParties(){
     console.log("making parties");
     return this.parties;
+  }
+  myParty(){
+    return this.party;
   }
   checkUser(email){
     console.log("about to check the user");
