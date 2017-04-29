@@ -12,8 +12,6 @@ let partyService : any;
 
 // let defaultOptions: any;
 
-// To be done by Matt and Will
-
 describe('HomePage testing', () => {
 
 	// beforeEach(() => {
