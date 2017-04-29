@@ -38,3 +38,8 @@ How to test:
 14) Run ‘npm install @types/jasmine --save-dev’ in Party_Pass_ionic/partypass
 15) Run ‘npm install @types/node --save-dev’ in Party_Pass_ionic/partypass
 16) Run ‘npm test’ in Party_Pass_ionic
+
+How to use:
+1) Enter a valid account in login ("user1 - pass1", "user2 - pass2", "user3 - pass3", "admin - adminpass")
+2) If in admin view, you can view the parties of the area on the main page. You can also click the map to view the parties on the map. If you select a party from the list, then you can view in in order to optionally edit it or remove it.
+3) If in user view, you can view your parties, select them to view them specifically in order to edit/delete them, or add another one using the button on the main page
