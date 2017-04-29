@@ -1,8 +1,8 @@
 import { partypass } from './partypass';
-//import {} from 'jasmine';
+import {} from 'jasmine';
 import { Test } from '../pages/test/test';
 import { Parties } from './parties';
-import { addProviders, inject } from '@angular/core/testing';
+import { inject } from '@angular/core/testing';
 import { Http, BaseRequestOptions, ConnectionBackend, RequestOptions } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import {Injectable, ReflectiveInjector} from '@angular/core';
