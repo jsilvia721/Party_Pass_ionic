@@ -1,19 +1,18 @@
-import { partypass } from './partypass';
 import {} from 'jasmine';
 import { Test } from '../pages/test/test';
 import { Parties } from './parties';
-import { inject } from '@angular/core/testing';
 import { Http, BaseRequestOptions, ConnectionBackend, RequestOptions } from '@angular/http';
-import { MockBackend, MockConnection } from '@angular/http/testing';
-import {Injectable, ReflectiveInjector} from '@angular/core';
-import {Response, ResponseOptions} from '@angular/http';
+import { MockBackend } from '@angular/http/testing';
+import { ReflectiveInjector} from '@angular/core';
 
 let testPage : any;
-let passParty : any;
+// let passParty : any;
 //let http: Http;
 let partyService : any;
 
-let defaultOptions: any;
+// let defaultOptions: any;
+
+// To be done by Matt and Will
 
 describe('HomePage testing', () => {
 
@@ -60,7 +59,7 @@ describe('HomePage testing', () => {
 		testPage.getPartiesTest();
 		// console.log(testParties);
 
-		var p = testPage.myMadeParties();
+		// var p = testPage.myMadeParties();
 		//all the parties object
 		// console.log(p);
 		// //gets the address of the first party

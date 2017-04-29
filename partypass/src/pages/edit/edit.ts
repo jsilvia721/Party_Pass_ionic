@@ -89,7 +89,7 @@ export class Edit {
   showAddressModal () {
     let modal = this.modalCtrl.create(Autocomplete);
 
-    let me = this;
+    // let me = this;
     modal.onDidDismiss(data => {
       if(data){
         this.place = data[0];

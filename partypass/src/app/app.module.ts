@@ -13,7 +13,7 @@ import { Autocomplete } from '../pages/autocomplete/autocomplete';
 import { AuthService } from './../providers/auth-service';
 import { Register } from '../pages/register/register';
 import { Login } from '../pages/login/login';
-import { Http, Headers, HttpModule } from '@angular/http';
+import { HttpModule } from '@angular/http';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';

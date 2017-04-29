@@ -1,6 +1,5 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
-import { HomePage } from '../home/home';
 import { Autocomplete } from '../autocomplete/autocomplete';
 import { AuthService } from '../../providers/auth-service';
 
@@ -83,7 +82,7 @@ export class Registration {
   showAddressModal () {
     let modal = this.modalCtrl.create(Autocomplete);
 
-    let me = this;
+    // let me = this;
     modal.onDidDismiss(data => {
       if(data){
         this.address.place = data[0];

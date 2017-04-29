@@ -22,6 +22,7 @@ How to run:
 - admin/adminpass (admin displays the admin view)
 
 How to test:
+Release: So this may or may not work, this was what Will said will make it work but we're not too sure. As far as our testing went without actually getting a test suite, we used console statements along the way to verify objects being passed through and we checked all of the functionality by exploratory testing.
 1) Run ‘npm install -g karma-cli’ in Party_Pass_ionic/partypass
 2) Run ‘npm install angular-cli --save-dev’ in Party_Pass_ionic/partypass
 3) Run ‘npm install codecov --save-dev’ in Party_Pass_ionic/partypass

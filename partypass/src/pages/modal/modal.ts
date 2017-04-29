@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
-import { App,IonicPage, NavController, NavParams, ViewController, ModalController, LoadingController, Loading } from 'ionic-angular';
+import { App,IonicPage, NavController, NavParams, ViewController, ModalController, LoadingController } from 'ionic-angular';
 import { Parties } from '../../providers/parties';
 import { HomePage } from '../home/home';
-import { Registration } from '../registration/registration'
 import { Edit } from '../edit/edit'
-import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { AuthService } from '../../providers/auth-service';
 /**
@@ -80,7 +77,7 @@ import { AuthService } from '../../providers/auth-service';
        s.style.color="red";
        var t = document.createTextNode("* Party Has Been Warned");
        s.appendChild(t);
-       
+
        document.getElementById("error3").appendChild(s);
        this.party.userinfo[0].notification = 'PARTY HAS BEEN WARNED';
        this.partyService.deleteParty(this.party._id);

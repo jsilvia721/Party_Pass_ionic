@@ -3,11 +3,7 @@ import { NavController, ModalController, ViewController, App, LoadingController,
 import { Modal } from '../modal/modal';
 import { Registration } from '../registration/registration'
 import { Parties } from '../../providers/parties';
-import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
 import { AuthService } from '../../providers/auth-service';
-import { Login } from '../login/login';
-import { AppModule } from './app.module';
 import 'rxjs/add/operator/map';
 
 @Component({
