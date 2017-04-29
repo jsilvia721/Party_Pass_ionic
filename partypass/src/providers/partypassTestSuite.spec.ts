@@ -1,5 +1,5 @@
 import { partypass } from './partypass';
-//import {} from 'jasmine';
+import {} from 'jasmine';
 import { Test } from '../pages/test/test';
 import { Parties } from './parties';
 import { inject } from '@angular/core/testing';
