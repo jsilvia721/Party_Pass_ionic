@@ -23,22 +23,7 @@ How to run:
 
 How to test:
 Release: So this may or may not work, this was what Will said will make it work but we're not too sure. As far as our testing went without actually getting a test suite, we used console statements along the way to verify objects being passed through and we checked all of the functionality by exploratory testing.
-1) Run ‘npm install -g karma-cli’ in Party_Pass_ionic/partypass
-2) Run ‘npm install angular-cli --save-dev’ in Party_Pass_ionic/partypass
-3) Run ‘npm install codecov --save-dev’ in Party_Pass_ionic/partypass
-4) Run ‘npm install jasmine-core --save-dev’ in Party_Pass_ionic/partypass
-5) Run ‘npm install jasmine-spec-reporter --save-dev’ in Party_Pass_ionic/partypass
-6) Run ‘npm install karma --save-dev’ in Party_Pass_ionic/partypass
-7) Run ‘npm install karma-chrome-launcher --save-dev’ in Party_Pass_ionic/partypass
-8) Run ‘npm install karma-jasmine --save-dev’ in Party_Pass_ionic/partypass
-9) Run ‘npm install karma-mocha-reporter --save-dev’ in Party_Pass_ionic/partypass
-10) Run ‘npm install karma-remap-istanbul --save-dev’ in Party_Pass_ionic/partypass
-11) Run ‘npm install ts-node --save-dev’ in Party_Pass_ionic/partypass
-12) Run ‘npm install tslint --save-dev’ in Party_Pass_ionic/partypass
-13) Run ‘npm install tslint-eslint-rules --save-dev’ in Party_Pass_ionic/partypass
-14) Run ‘npm install @types/jasmine --save-dev’ in Party_Pass_ionic/partypass
-15) Run ‘npm install @types/node --save-dev’ in Party_Pass_ionic/partypass
-16) Run ‘npm test’ in Party_Pass_ionic
+1) Run ‘npm test’ in Party_Pass_ionic
 
 How to use:
 1) Enter a valid account in login ("user1 - pass1", "user2 - pass2", "user3 - pass3", "admin - adminpass")
